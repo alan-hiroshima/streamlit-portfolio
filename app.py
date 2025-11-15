@@ -156,21 +156,6 @@ def main():
                     if p.get("link"):
                         st.markdown(f"[View project →]({p['link']})", unsafe_allow_html=True)
 
-        st.markdown("---")
-        st.info("To add project images: upload them below and then reference them in the projects list (e.g., 'images/filename.png').")
-
-        uploaded_files = st.file_uploader(
-            "Upload project images (optional)",
-            accept_multiple_files=True,
-            type=["png", "jpg", "jpeg"]
-        )
-        if uploaded_files:
-            os.makedirs("images", exist_ok=True)
-            for up in uploaded_files:
-                save_path = os.path.join("images", up.name)
-                with open(save_path, "wb") as f:
-                    f.write(up.getbuffer())
-            st.success(f"Saved {len(uploaded_files)} file(s) to /images. Refresh the portfolio list to use them.")
 
     # ----------------- CONTACT -----------------
     with tabs[2]:
